@@ -1,0 +1,6 @@
+:80, {$SITE_ADDRESS} {
+    tls {
+        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+    }
+    respond "Hello, World!"
+}
