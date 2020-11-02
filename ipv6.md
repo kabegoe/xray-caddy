@@ -1,3 +1,6 @@
+# Genreal guide
+https://valinux.hatenablog.com/entry/20200709
+
 # About nftable
 See https://wiki.nftables.org/wiki-nftables/index.php/Main_Page
 
@@ -10,8 +13,11 @@ sudo apt install nftable
 # Configure and enable nftable setting
 See
 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/getting-started-with-nftables_configuring-and-managing-networking
+
 https://wiki.archlinux.org/index.php/nftables
+
 https://tokyodebian-team.pages.debian.net/pdf2019/debianmeetingresume201912.pdf
+
 http://forums.debian.net/viewtopic.php?f=16&t=143876
 
 # Edit Docker daemon config to enable IPv6 on bridge
