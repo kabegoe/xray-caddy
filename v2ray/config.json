@@ -39,7 +39,11 @@
     ],
     "outbounds": [
         {
-            "protocol": "freedom"
+            "sendThrough": "::",
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIPv6"
+            }
         }
     ]
 }
