@@ -10,6 +10,7 @@
                 "clients": [
                     {
                         "id": "",
+			"flow": "xtls-rprx-direct",
                         "email": ""
                     }
                 ],
@@ -22,7 +23,7 @@
             },
             "streamSettings": {
                 "network": "tcp",
-                "security": "tls",
+                "security": "xtls",
                 "tlsSettings": {
                     "alpn": [
                         "http/1.1"
