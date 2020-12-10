@@ -1,8 +1,8 @@
 version: '3.8'
 services:
 
-  v2ray:
-    image: "teddysun/xray:1.0.0"
+  xray:
+    image: "teddysun/xray:1.1.2"
     network_mode: "bridge"
     links:
       - "caddy"
@@ -11,8 +11,6 @@ services:
     volumes:
       - ./xray/config.json:/etc/xray/config.json
       - caddy_data:/data
-    depends_on:
-      - caddy
     restart: unless-stopped
 
   caddy:
