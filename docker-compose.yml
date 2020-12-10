@@ -13,7 +13,7 @@ services:
       - caddy_data:/data
     depends_on:
       - caddy
-    restart: on-failure
+    restart: unless-stopped
 
   caddy:
     build:
@@ -31,6 +31,7 @@ services:
     environment:
       - SITE_ADDRESS=<your domain:8443>
       - CLOUDFLARE_API_TOKEN=<API token from Cloudflare>
+    restart: unless-stopped
 
 volumes:
   caddy_data:
