@@ -2,7 +2,11 @@ version: '3.8'
 services:
 
   xray:
-    image: "teddysun/xray:1.1.4"
+    build:
+      context: ./xray/docker
+      args:
+        - version=v1.1.4
+        - timezone=Asia/Tokyo
     network_mode: "bridge"
     links:
       - "caddy"
