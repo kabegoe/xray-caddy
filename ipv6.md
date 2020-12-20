@@ -37,3 +37,19 @@ sudo nft add table ip6 nat
 sudo nft add chain ip6 nat POSTROUTING { type nat hook postrouting priority 100 \; }
 sudo nft add rule ip6 nat POSTROUTING oifname != "docker0" ip6 saddr fd86::/64 counter masquerade
 ```
+## ufw version
+Add following snippet to `/etc/ufw/before6.rules`.
+```
+$ sudo vim /etc/ufw/before6.rules
+
+/etc/ufw/before6.rules
+...
+# Docker IPv6 port forward
+*nat
+:POSTROUTING ACCEPT [0:0]
+-A POSTROUTING -s fd86::/64 ! -o docker0 -j MASQUERADE
+COMMIT
+...
+*filter
+...
+```
