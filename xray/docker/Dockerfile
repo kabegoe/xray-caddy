@@ -17,6 +17,7 @@ ARG timezone
 COPY --from=builder /root/Xray-core/xray /usr/bin/xray
 RUN apk add --no-cache tzdata ca-certificates && \
     cp /usr/share/zoneinfo/$timezone /etc/localtime && \
-    apk del tzdata
+    apk del tzdata && \
+    mkdir -p /var/log/xray
 WORKDIR /root
 CMD ["xray", "-config", "/etc/xray/config.json"]
