@@ -2,7 +2,7 @@ version: '3.8'
 services:
 
   xray:
-    image: "teddysun/xray:1.1.2"
+    image: "teddysun/xray:1.1.4"
     network_mode: "bridge"
     links:
       - "caddy"
