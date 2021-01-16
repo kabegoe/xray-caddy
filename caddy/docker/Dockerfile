@@ -4,12 +4,11 @@
 # https://hub.docker.com/_/caddy?tab=description
 
 ARG version
-ARG os
 
 #
 # Builder
 #
-FROM caddy:$version-builder-$os AS builder
+FROM caddy:$version-builder-alpine AS builder
 # Add Cloudflare module
 RUN xcaddy build \
     --with github.com/caddy-dns/cloudflare
@@ -17,7 +16,7 @@ RUN xcaddy build \
 #
 # Caddy image
 #
-FROM caddy:$version-$os
+FROM caddy:$version-alpine
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
