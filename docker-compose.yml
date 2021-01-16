@@ -21,8 +21,7 @@ services:
     build:
       context: ./caddy/docker
       args:
-        - version=2.2.1
-        - os=alpine
+        - version=2.3.0
     network_mode: "bridge"
     ports:
       - "8443:8443"
