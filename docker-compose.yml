@@ -5,13 +5,9 @@ services:
     build:
       context: ./xray/docker
       args:
-        - version=v1.1.4
+        - version=v1.3.0
         - timezone=Asia/Tokyo
-    network_mode: "bridge"
-    links:
-      - "caddy"
-    ports:
-      - "443:443"
+    network_mode: "host"
     volumes:
       - ./xray/config.json:/etc/xray/config.json
       - caddy_data:/data
@@ -22,9 +18,7 @@ services:
       context: ./caddy/docker
       args:
         - version=2.3.0
-    network_mode: "bridge"
-    ports:
-      - "8443:8443"
+    network_mode: "host"
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data

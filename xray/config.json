@@ -17,7 +17,7 @@
                 "decryption": "none",
                 "fallbacks": [
                     {
-                        "dest": "caddy:80"
+                        "dest": 80
                     }
                 ]
             },
