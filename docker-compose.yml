@@ -5,7 +5,7 @@ services:
     build:
       context: ./xray/docker
       args:
-        - version=v1.3.0
+        - version=v1.3.1
         - timezone=Asia/Tokyo
     network_mode: "host"
     volumes:
