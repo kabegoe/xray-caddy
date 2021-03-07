@@ -9,9 +9,9 @@
             "settings": {
                 "clients": [
                     {
-                        "id": "",
+                        "id": "<UUID> or <string>",
 			"flow": "xtls-rprx-direct",
-                        "email": ""
+                        "email": "<Your email>"
                     }
                 ],
                 "decryption": "none",

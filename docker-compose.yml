@@ -1,18 +1,16 @@
 version: '3.8'
 services:
-
   xray:
     build:
       context: ./xray/docker
       args:
         - version=v1.3.1
-        - timezone=Asia/Tokyo
+        - timezone=<your timezone>
     network_mode: "host"
     volumes:
       - ./xray/config.json:/etc/xray/config.json
       - caddy_data:/data
     restart: unless-stopped
-
   caddy:
     build:
       context: ./caddy/docker
@@ -22,12 +20,10 @@ services:
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
-      - caddy_config:/config
     environment:
-      - SITE_ADDRESS=<your domain:8443>
+      - HTTP_ADDRESS=http://:80
+      - HTTPS_ADDRESS=https://<Your domain>:8443
       - CLOUDFLARE_API_TOKEN=<API token from Cloudflare>
     restart: unless-stopped
-
 volumes:
   caddy_data:
-  caddy_config:
