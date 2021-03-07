@@ -20,14 +20,14 @@ Edit Docker daemon config and restart Docker daemon service. See https://docs.do
 #### Option1: nftable
 See https://wiki.nftables.org/wiki-nftables/index.php/Main_Page
 
-*Install nftable*
+**Install nftable**
 
 See https://wiki.debian.org/nftables
 ```
 $ sudo apt install nftable
 ```
 
-*Configure and enable nftable setting*
+**Configure and enable nftable setting**
 
 See
 
@@ -40,7 +40,7 @@ https://tokyodebian-team.pages.debian.net/pdf2019/debianmeetingresume201912.pdf
 http://forums.debian.net/viewtopic.php?f=16&t=143876
 
 
-*Add Masquerading rule for IPv6*
+**Add Masquerading rule for IPv6**
 
 ```
 $ sudo nft add table ip6 nat
@@ -49,7 +49,7 @@ $ sudo nft add rule ip6 nat POSTROUTING oifname != "docker0" ip6 saddr fd86::/64
 ```
 
 #### Option2: ufw
-*Add following snippet to `/etc/ufw/before6.rules`.*
+**Add following snippet to `/etc/ufw/before6.rules`.**
 
 ```
 $ sudo vim /etc/ufw/before6.rules
