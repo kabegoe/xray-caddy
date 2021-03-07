@@ -1,4 +1,9 @@
-:80, {$SITE_ADDRESS} {
+{
+    admin off
+    auto_https disable_redirects
+}
+
+{$HTTP_ADDRESS}, {$HTTPS_ADDRESS} {
     tls {
         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
     }

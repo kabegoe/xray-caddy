@@ -21,7 +21,8 @@ services:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
     environment:
-      - SITE_ADDRESS=<your domain:8443>
+      - HTTP_ADDRESS=http://:80
+      - HTTPS_ADDRESS=https://<Your domain>:8443
       - CLOUDFLARE_API_TOKEN=<API token from Cloudflare>
     restart: unless-stopped
 volumes:
