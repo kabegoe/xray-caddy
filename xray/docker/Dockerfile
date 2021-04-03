@@ -19,4 +19,4 @@ RUN apk add --no-cache tzdata ca-certificates && \
     cp /usr/share/zoneinfo/$timezone /etc/localtime && \
     apk del tzdata
 WORKDIR /root
-CMD ["xray", "-config", "/etc/xray/config.json"]
+CMD ulimit -SHn 1000000 && xray -c=/etc/xray/config.json
