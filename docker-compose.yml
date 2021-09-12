@@ -15,7 +15,7 @@ services:
     build:
       context: ./caddy/docker
       args:
-        - version=2.4.1
+        - version=2.4.5
     network_mode: "host"
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
