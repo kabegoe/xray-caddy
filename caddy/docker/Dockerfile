@@ -17,6 +17,9 @@ RUN xcaddy build \
 # Caddy image
 #
 FROM caddy:$version-alpine
+ARG timezone
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
-
+RUN apk add --no-cache tzdata ca-certificates && \
+    cp /usr/share/zoneinfo/$timezone /etc/localtime && \
+    apk del tzdata
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]

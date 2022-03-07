@@ -16,6 +16,7 @@ services:
       context: ./caddy/docker
       args:
         - version=2.4.6
+        - timezone=<your timezone>
     network_mode: "host"
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
