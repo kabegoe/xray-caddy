@@ -4,39 +4,22 @@
     },
     "inbounds": [
         {
-            "port": 443,
+            "port": 2002,
             "protocol": "vless",
             "settings": {
                 "clients": [
                     {
                         "id": "<UUID> or <string>",
-			"flow": "xtls-rprx-direct",
-                        "email": "<Your email>"
+                        "email": "<alias for the user>"
                     }
                 ],
-                "decryption": "none",
-                "fallbacks": [
-                    {
-                        "dest": 80
-                    }
-                ]
+                "decryption": "none"
             },
             "streamSettings": {
-                "network": "tcp",
-                "security": "xtls",
-                "xtlsSettings": {
-		    "rejectUnknownSni": true,
-                    "alpn": [
-			"h2",
-                        "http/1.1"
-                    ],
-                    "minVersion": "1.3",
-                    "certificates": [
-                        {
-                            "certificateFile": "/path/to/certificate.crt",
-                            "keyFile": "/path/to/key.key"
-                        }
-                    ]
+                "network": "grpc",
+                "grpcSettings": {
+		    "serviceName": "<http path>",
+		    "multiMode": true
                 }
             }
         }
