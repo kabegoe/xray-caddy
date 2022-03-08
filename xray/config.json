@@ -18,8 +18,7 @@
             "streamSettings": {
                 "network": "grpc",
                 "grpcSettings": {
-		    "serviceName": "<http path>",
-		    "multiMode": true
+		    "serviceName": "<http path>"
                 }
             }
         }
