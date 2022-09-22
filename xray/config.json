@@ -1,10 +1,12 @@
 {
     "log": {
-        "loglevel": "warning"
+        "loglevel": "warning",
+	"access": "/log/access.log",
+	"error": "/log/error.log"
     },
     "inbounds": [
         {
-            "port": 2002,
+            "listen": "/data/xray.sock",
             "protocol": "vless",
             "settings": {
                 "clients": [
@@ -18,7 +20,7 @@
             "streamSettings": {
                 "network": "grpc",
                 "grpcSettings": {
-		    "serviceName": "<http path>"
+		    "serviceName": "<grpc path>"
                 }
             }
         }

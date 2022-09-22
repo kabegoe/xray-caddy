@@ -3,11 +3,10 @@
 # See *Adding custom Caddy modules* section from
 # https://hub.docker.com/_/caddy?tab=description
 
-ARG version
-
 #
 # Builder
 #
+ARG version
 FROM caddy:$version-builder-alpine AS builder
 # Add Cloudflare module
 RUN xcaddy build \
@@ -16,6 +15,7 @@ RUN xcaddy build \
 #
 # Caddy image
 #
+ARG version
 FROM caddy:$version-alpine
 ARG timezone
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy

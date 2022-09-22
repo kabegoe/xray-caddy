@@ -1,29 +1,34 @@
-version: '3.8'
 services:
   xray:
     build:
       context: ./xray/docker
       args:
-        - version=v1.5.3
-        - timezone=<your timezone>
+        - version=v1.6.0
+        - go_version=1.19
+        - timezone=${TIMEZONE-Etc/UTC}
     network_mode: "host"
     volumes:
       - ./xray/config.json:/etc/xray/config.json
+      - xray_log:/log
+      - caddy_data:/data
     restart: unless-stopped
   caddy:
     build:
       context: ./caddy/docker
       args:
-        - version=2.4.6
-        - timezone=<your timezone>
+        - version=2.6.0
+        - timezone=${TIMEZONE-Etc/UTC}
     network_mode: "host"
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - ./caddy/www:/etc/caddy/www
       - caddy_data:/data
     environment:
-      - HTTPS_ADDRESS=https://<Your domain>:443
-      - CLOUDFLARE_API_TOKEN=<API token from Cloudflare>
+      - DOMAIN=${DOMAIN}
+      - PORT=${PORT}
+      - GRPC_PATH=${GRPC_PATH}
+      - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN}
     restart: unless-stopped
 volumes:
   caddy_data:
+  xray_log:

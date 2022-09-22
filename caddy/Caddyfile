@@ -1,18 +1,20 @@
 {
 	admin off
 	auto_https disable_redirects
-	acme_ca https://acme-v02.api.letsencrypt.org/directory
+	servers :{$PORT} {
+		protocols h1 h2
+	}
 }
 
-{$HTTPS_ADDRESS} {
-	@grpc {
+https://{$DOMAIN}:{$PORT} {
+	@gRPC {
 		protocol grpc
-		path /<http path>/*
+		path /{$GRPC_PATH}/*
 	}
 	tls {
 		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
 	}
-	reverse_proxy @grpc h2c://127.0.0.1:2002
+	reverse_proxy @gRPC unix+h2c//data/xray.sock
 	root * /etc/caddy/www
 	file_server
 }

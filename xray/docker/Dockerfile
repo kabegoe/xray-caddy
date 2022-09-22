@@ -1,7 +1,8 @@
 #
 # Builder
 #
-FROM golang:alpine AS builder
+ARG go_version
+FROM golang:$go_version-alpine AS builder
 ARG version
 WORKDIR /root
 RUN apk add --no-cache git gcc musl-dev ca-certificates && \
